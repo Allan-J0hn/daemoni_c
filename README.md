@@ -1,4 +1,4 @@
-# Daemoni-C Compiler
+# Daemoni_c Compiler
 
 Daemoni-C is a toy compiler for a C-like language, generating LLVM IR from parsed ASTs with semantic checks for scope, type consistency, and variable use.
 
