@@ -1,6 +1,6 @@
 # Daemoni_c Compiler
 
-Daemoni-C is a toy compiler for a C-like language, generating LLVM IR from parsed ASTs with semantic checks for scope, type consistency, and variable use.
+Daemoni-c is a toy compiler for a C-like language, generating LLVM IR from parsed ASTs with semantic checks for scope, type consistency, and variable use.
 
 ## Features
 - Lexer for tokenizing C-like source code (supports identifiers, numbers, keywords, and basic operators).
