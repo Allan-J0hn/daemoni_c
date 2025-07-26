@@ -1,0 +1,46 @@
+#ifndef AST_NODE_H
+#define AST_NODE_H
+
+#include "../lexer/Token.h"
+
+using namespace std;
+
+/**
+ * Base class for all AST nodes.
+ */
+class ASTNode {
+public:
+    virtual ~ASTNode() = default;
+};
+
+/**
+ * Binary expression node (e.g., a + b).
+ */
+class BinaryExpr : public ASTNode {
+public:
+    BinaryExpr(Token op, ASTNode* left, ASTNode* right)
+        : op(op), left(left), right(right) {}
+    Token op;
+    ASTNode* left;
+    ASTNode* right;
+};
+
+/**
+ * Number literal node (e.g., 42).
+ */
+class NumberExpr : public ASTNode {
+public:
+    NumberExpr(Token number) : number(number) {}
+    Token number;
+};
+
+/**
+ * Variable reference node (e.g., x).
+ */
+class VariableExpr : public ASTNode {
+public:
+    VariableExpr(Token id) : id(id) {}
+    Token id;
+};
+
+#endif // AST_NODE_H

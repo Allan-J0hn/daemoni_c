@@ -1,0 +1,19 @@
+// test.dmnc
+int main(int x, bool flag) {
+    int result = 0;
+
+    if (flag) {
+        int x = 42;     // shadows parameter
+        result = x + 1;
+    } else {
+        result = x * 2;
+    }
+
+    int i = 0;
+    while (i < 5) {
+        result = result + i;
+        i = i + 1;
+    }
+
+    return result;
+}

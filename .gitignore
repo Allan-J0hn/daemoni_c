@@ -1,0 +1,31 @@
+# Build and CMake files
+/build/
+/CMakeFiles/
+/CMakeCache.txt
+/Makefile
+/cmake_install.cmake
+/install_manifest.txt
+
+# Executables and binaries
+/daemoni_c
+/bin/
+/*.o
+/*.out
+/*.a
+/*.so
+
+# IDE and editor files
+*.swp
+*.swo
+*.bak
+*~
+.vscode/
+.idea/
+
+# Generated files (e.g., LLVM IR or bytecode)
+*.ll
+*.bc
+
+# Tests output
+/tests/*.out
+/tests/*.log
