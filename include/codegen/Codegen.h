@@ -1,3 +1,4 @@
+// include/codegen/Codegen.h
 #pragma once
 #include "../ast/ASTNode.h"
 #include "llvm/IR/LLVMContext.h"
@@ -25,14 +26,27 @@ private:
     unique_ptr<Module> module;
     unique_ptr<IRBuilder<>> builder;
 
+    // Scoped symbol table of stack allocas (variables/params)
     vector<unordered_map<string, Value *>> symbolStack;
 
+    // ---- scope mgmt ----
     void pushScope();
     void popScope();
     void insertVar(const string &name, Value *ptr);
     Value *lookupVar(const string &name);
 
+    // ---- top-level lowering ----
     void generateFunction(FunctionDecl *func);
     void generateStatement(Stmt *stmt);
     Value *generateExpr(Expr *expr);
+
+    // ---- type normalization helpers ----
+    Value *asBool(Value *v);
+
+    Value *asI32(Value *v);
+
+    // ---- short-circuit logical lowering ----
+    Value *emitLogicalAnd(Expr *lhs, Expr *rhs);
+
+    Value *emitLogicalOr(Expr *lhs, Expr *rhs);
 };
