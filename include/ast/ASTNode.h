@@ -1,3 +1,4 @@
+// include/ast/ASTNode.h
 #pragma once
 #include "../lexer/Token.h"
 #include <vector>
@@ -28,19 +29,9 @@ public:
 
 enum class BinaryOpKind
 {
-    Add,
-    Sub,
-    Mul,
-    Div,
-    Mod,
-    Eq,
-    Ne,
-    Lt,
-    Le,
-    Gt,
-    Ge,
-    And,
-    Or
+    Add, Sub, Mul, Div, Mod,
+    Eq, Ne, Lt, Le, Gt, Ge,
+    And, Or
 };
 
 enum class UnaryOpKind
@@ -72,11 +63,7 @@ public:
 class Literal : public Expr
 {
 public:
-    enum class Kind
-    {
-        Int,
-        Bool
-    } kind;
+    enum class Kind { Int, Bool } kind;
     int intValue;
     bool boolValue;
 
@@ -116,8 +103,7 @@ class ReturnStmt : public Stmt
 public:
     unique_ptr<Expr> expr;
 
-    ReturnStmt(unique_ptr<Expr> expr)
-        : expr(move(expr)) {}
+    ReturnStmt(unique_ptr<Expr> expr) : expr(move(expr)) {}
 };
 
 class IfStmt : public Stmt
@@ -150,10 +136,7 @@ class FunctionDecl : public ASTNode
 public:
     Token returnType;
     Token name;
-
-    // NEW: vector of (type, name) pairs for parameters
     vector<pair<Token, Token>> params;
-
     vector<unique_ptr<Stmt>> body;
 
     FunctionDecl(Token returnType, Token name,
